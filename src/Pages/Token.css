@@ -1,0 +1,74 @@
+.click-back-button{
+    font-family: Calibre,Helvetica,Arial,sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #82817d;
+    cursor: pointer;
+}
+
+.click-back-button:hover{
+    color: #2a2825
+}
+
+.card-main-header {
+    color: rgba(0,0,0,.85) !important;
+    margin-bottom: 15px !important;
+    font-weight: 700 !important;
+    font-size: 1.3rem !important;
+    line-height: 1.28571429em !important;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
+.card-metadata-header-old {
+    color: #18af5de8 !important;
+    margin-bottom: 15px !important;
+}
+
+.card-metadata-header {
+    color: rgba(0,0,0,.85) !important;
+    font-weight: 700 !important;
+    font-size: 1.18571429rem !important;
+    line-height: 1.28571429em !important;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
+.upload-image-container {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.upload-image-button {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.upload-image-container input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+.mint-token-card input[type=file] {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.token-creation-card {
+    height: 400px;
+    overflow: scroll;
+}
+
+.edit-token-metadata-card {
+}

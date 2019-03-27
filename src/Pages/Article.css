@@ -1,0 +1,19 @@
+.click-back-button{
+    font-family: Calibre,Helvetica,Arial,sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #82817d;
+    cursor: pointer;
+}
+
+.click-back-button:hover{
+    color: #2a2825
+}
+
+.article-content {
+    letter-spacing: .01rem !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    font-size: 21px !important;
+    line-height: 1.58 !important;
+}
