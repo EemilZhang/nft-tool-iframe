@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Menu, Container, Card, Ref, Header, Segment } from 'semantic-ui-react'
+import { Container, Card } from 'semantic-ui-react'
 import './App.css';
-import EZNFTLogo from './Assets/Brand_Assets/EZNFT-Logo.png';
 import Web3 from "web3";
 import getWeb3 from './Utility/getWeb3';
 import getNFT from './Utility/getNFT';
@@ -158,7 +157,7 @@ class App extends Component {
     return(
       <div>
       <Card className='main-iframe'>
-          <Container style={{maxHeight: '100%', overflow: 'scroll', padding: '1em 0.1em', marginTop: '1em'}}>
+          <div className='main-container'>
             <Dashboard
               web3={this.state.web3}
               network={this.state.network}
@@ -191,7 +190,7 @@ class App extends Component {
               triggerAppUpdate={this.triggerAppUpdate}
               isIframe={this.state.isIframe}
             />
-          </Container>
+          </div>
       </Card>
       </div>
     )

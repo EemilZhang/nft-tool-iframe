@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Button, Confirm, Icon, Header, Card, Popup, Form, Input, Image, Label, TextArea, List, Divider } from 'semantic-ui-react'
+import { Segment, Button, Confirm, Icon, Header, Card, Popup, Form, Input, Image, Label, TextArea, List, Divider, Grid } from 'semantic-ui-react'
 import './Token.css';
 import Axios from 'axios';
 import signTokenMetadata from '../Utility/signTokenMetadata';
@@ -186,27 +186,24 @@ class Token extends React.Component {
         if (!this.props.EZNFTMetadata.hasOwnProperty(parseInt(this.props.activeToken)) && this.props.isIframe === true) {
             return (
                 <div className='edit-token-metadata-card'>
-                        <div style={{padding: '0.2em 0em 0em 0em', marginTop: '0.5em'}}>
+                    <div style={{padding: '0.2em 0em 0em 0em', marginTop: '-1.3em'}}>
+                        <div onClick={this.props.handleTokenClickBack} className='click-back-button' style={{}}>
+                        <Icon name='left arrow'/> Back
+                    </div>
 
-                            <Card.Content>
-                                    <Header 
-                                        as='h4'
-                                        className='card-metadata-header'
-                                        style={{marginTop: '0.2em', marginBottom: '0.3em'}}
-                                    >
-                                        Token Image
-                                    </Header>
-                                    
-                                    <Card link={false} key='createToken' className='mint-token-card' style={{margin: '0px', paddingBottom: '1px'}}>
+                        <Segment color='blue' style={{marginTop: '0.3em'}}>
+                            <Grid columns='equal'>
+                                <Grid.Column>
+                                    <Card link={false} key='createToken' className='mint-token-card' style={{margin: '0px 0px 0px 0px', paddingBottom: '1px', width: '100px', height: '90px'}}>
                                         {this.state.file && (
-                                            <Image src={this.state.imagePreviewUrl} style={{maxWidth: '290px', maxHeight: '100px', width: 'auto', objectFit: 'contain', backgroundColor: '#ffffff'}}/>
+                                            <Image src={this.state.imagePreviewUrl} style={{maxWidth: '100px', maxHeight: '86px', width: 'auto', objectFit: 'contain', backgroundColor: '#ffffff'}}/>
                                         )}
                                         {!this.state.file && (
                                             <Card.Content className='mint-token-content' >
-                                                <div className='mint-token-header'>
+                                                <div className='mint-token-header' style={{lineHeight: '1.2rem', marginTop: '0px', fontSize: '1rem'}}>
                                                     Upload Image
                                                 </div>
-                                                <div className='mint-token-description'>
+                                                <div className='mint-token-description' style={{marginBottom: '0px'}}>
                                                     <Icon name='upload' size='large' className='mint-token-card-icon'/>
                                                 </div>
                                             </Card.Content>
@@ -214,53 +211,56 @@ class Token extends React.Component {
                                         
                                         <input type="file" onChange={this.handleImageChange}/>
                                     </Card>
-                                    
-                                    <Segment color='blue' style={{}}>
-                                        <Header 
-                                            as='h4'
-                                            className='card-metadata-header'
-                                            style={{marginTop: '1em', marginBottom: '0.3em'}}
-                                        >
-                                        Token Name
-                                        </Header>
-                                        <Input placeholder='My Token' name='tokenName' fluid onChange={this.handleChange} style={{marginTop: '0.5em'}}/>
-                                    </Segment>
+                                </Grid.Column>
+                                <Grid.Column >
+                                    <Header 
+                                        as='h4'
+                                        className='card-metadata-header-new'
+                                        style={{marginTop: '-3px', marginBottom: '0em', marginLeft: '-14px', fontSize: '1rem'}}
+                                    >
+                                    Token Name
+                                    </Header>
+                                    <Input className='input-wrapper' placeholder='My Token' name='tokenName' fluid onChange={this.handleChange} size='mini' style={{marginTop: '0.1em', marginLeft: '-14px'}}/>
 
                                     <Header 
                                         as='h4'
-                                        className='card-metadata-header'
-                                        style={{marginTop: '1em', marginBottom: '0.3em'}}
+                                        className='card-metadata-header-new'
+                                        style={{marginTop: '3px', marginBottom: '0em', marginLeft: '-14px', fontSize: '1rem'}}
                                     >
                                     External Url
                                     </Header>
                                     
-                                    <Input label={<Label style={{color: 'rgba(52, 134, 208, 0.89)'}}>http://</Label>} name='tokenUrl' onChange={this.handleChange}  placeholder='yoursite.com/yourtoken' fluid/>
+                                    <Input className='input-wrapper' size='mini' name='tokenUrl' onChange={this.handleChange}  placeholder='yoursite.com/token' fluid style={{marginTop: '0.1em', marginLeft: '-14px'}}/>
     
-                                    <Header 
-                                        as='h4'
-                                        className='card-metadata-header'
-                                        style={{marginTop: '1em', marginBottom: '0.3em'}}
-                                    >
-                                    Description
-                                    </Header>
-                                    <Form>
-                                        <TextArea rows={2} placeholder='Token description...' name='tokenDescription' onChange={this.handleChange} style={{resize: 'none'}}/>
-                                    </Form>
-                                </Card.Content>
-                        </div>
-                        <Button  color='grey' onClick={this.props.handleTokenClickBack}>
-                            <Icon name='left arrow'/> Back                    
-                        </Button>
-                        <Button 
-                            
-                            color='blue' 
-                            onClick={(this.state.file || this.state.confirmSelect)? this.handleSubmitUpdate: this.handleConfirm}
-                            style={{marginTop: '1em'}}
-                        >
-                            Add Metadata
-                        </Button>
-                        <Confirm open={this.state.confirmOpen} content='You have not uploaded an image, are you sure you want to create a token without one?' onCancel={this.handleConfirm} onConfirm={this.handleSubmitUpdate} />
+                                </Grid.Column>
+                            </Grid>
+                            <Divider/>
+                            <Header 
+                                as='h4'
+                                className='card-metadata-header-new'
+                                style={{marginTop: '-0.6em', marginBottom: '0.4em', fontSize: '1rem'}}
+                            >
+                            Description
+                            </Header>
+                            <Form>
+                                <TextArea rows={1} className='input-wrapper' placeholder='Token description...' name='tokenDescription' onChange={this.handleChange} style={{resize: 'none'}}/>
+                            </Form>
+                            <Divider/>
+                            <Button 
+                                color='blue' 
+                                fluid
+                                onClick={(this.state.file || this.state.confirmSelect)? this.handleSubmitUpdate: this.handleConfirm}
+                                style={{marginTop: '0.2em'}}
+                            >
+                                Add Metadata
+                            </Button>
+                            <Confirm open={this.state.confirmOpen} content='You have not uploaded an image, are you sure you want to create a token without one?' onCancel={this.handleConfirm} onConfirm={this.handleSubmitUpdate} />
 
+                        </Segment>
+                                    
+                                    
+                        </div>
+                        
                 </div>
             )
         }

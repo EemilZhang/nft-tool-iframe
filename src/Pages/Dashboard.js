@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Button, Icon, Header, Card, Placeholder, Loader, Image, Sticky, Rail } from 'semantic-ui-react'
+import { Segment, Button, Icon, Card, Placeholder, Loader, Image } from 'semantic-ui-react'
 import './Dashboard.css';
 import GetMetamaskImage from '../Assets/Brand_Assets/GetMetamask.png';
 
@@ -79,7 +79,7 @@ const Dashboard = (props) => {
         } else if (EZNFTArray.length === 0) {
             if (!pendingTransaction) {
                 return (
-                    <Card.Group itemsPerRow={4} doubling stackable>
+                    <Card.Group itemsPerRow={4} doubling stackable style={{display: 'block'}}>
                             <Card link={false} key='createToken' onClick={props.createToken} className='mint-token-card'>
                                 <Card.Content className='mint-token-content'>
                                     <div className='mint-token-header'>
@@ -94,7 +94,7 @@ const Dashboard = (props) => {
                 )
             } else {
                 return (
-                        <Card.Group itemsPerRow={4}>
+                        <Card.Group itemsPerRow={4} style={{display: 'block'}}>
                             <Card link raised id='pending'>
                                 <Card.Content>
                                     <Placeholder>
@@ -117,7 +117,7 @@ const Dashboard = (props) => {
                 if (props.EZNFTMetadata.hasOwnProperty(parseInt(id)) && props.shouldFetchMetadata === false) {
                     let token = props.EZNFTMetadata[parseInt(id)];
                     return (
-                        <Card link raised key={id} onClick={() => props.handleTokenClick(id)}>
+                        <Card link raised key={id} onClick={() => props.handleTokenClick(id)} style={{ width: 'calc(100% - 2em)', margin: '1em 1em'}}>
                             <Card.Content >
                                 {token.image && (
                                         <Image floated='right' size='mini' src={token.image} style={{maxHeight: '35px', maxWidth: '35px', height: '35px', width: '35px', objectFit: 'contain', backgroundColor: '#ffffff', border: '1px #fff9'}}/>   
@@ -132,7 +132,7 @@ const Dashboard = (props) => {
                     )
                 } else if (!props.EZNFTMetadata[id] && props.shouldFetchMetadata === false) {
                     return (
-                        <Card link raised key={id} onClick={() => props.handleTokenClick(id)}>
+                        <Card link raised key={id} onClick={() => props.handleTokenClick(id)} style={{ width: 'calc(100% - 2em)', margin: '1em 1em'}}>
                             <Card.Content className='mint-token-image'>                        
                                 <Card.Header style={{color: 'rgba(97, 92, 88, 0.42)'}}>Your Token</Card.Header>
                                 <Card.Meta># {id}</Card.Meta>
@@ -144,7 +144,7 @@ const Dashboard = (props) => {
                     )
                 } else {
                     return (
-                        <Card link raised key={id}>
+                        <Card link raised key={id} style={{ width: 'calc(100% - 2em)', margin: '1em 1em'}}>
                             <Card.Content >                        
                                 <Card.Header></Card.Header>
                                 <Card.Meta>Token {id}</Card.Meta>
@@ -157,10 +157,10 @@ const Dashboard = (props) => {
                 }
             })
             return (
-                    <Card.Group itemsPerRow={4} doubling stackable>
+                    <Card.Group itemsPerRow={4} doubling stackable style={{display: 'block'}}>
                         {tokens}
                         {!pendingTransaction && (
-                            <Card link={false} key='createToken' onClick={props.createToken} className='mint-token-card'>
+                            <Card link={false} key='createToken' onClick={props.createToken} className='mint-token-card' style={{ width: 'calc(100% - 2em)', margin: '1em 1em'}}>
                                 <Card.Content className='mint-token-content'>
                                     <div className='mint-token-header'>
                                         Create Token
@@ -172,7 +172,7 @@ const Dashboard = (props) => {
                             </Card>
                         )}
                         {pendingTransaction && (
-                            <Card link raised id='pending'>
+                            <Card link raised id='pending' style={{ width: 'calc(100% - 2em)'}}>
                                 <Card.Content>
                                     <Placeholder>
                                         <Placeholder.Header>

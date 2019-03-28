@@ -32,6 +32,15 @@
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
+.card-metadata-header-new {
+    color: rgba(0,0,0,.85) !important;
+    font-weight: 700 !important;
+    font-size: 1.rem !important;
+    line-height: 1.28571429em !important;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
+
 .upload-image-container {
     position: relative;
     overflow: hidden;
@@ -70,5 +79,6 @@
     overflow: scroll;
 }
 
-.edit-token-metadata-card {
+.input-wrapper :first-child {
+    padding: 0.5em !important;
 }
