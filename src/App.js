@@ -92,11 +92,19 @@ class App extends Component {
     }
   }
 
-  web3Sync = async (web3, selectedAddress) => {
+  web3Sync = async (web3) => {
       const network = await web3.eth.net.getId();
+      
       if (network === 1) {
         const accounts = await web3.eth.getAccounts();
-        const account = (selectedAddress) ? selectedAddress : accounts[0];
+        const account = accounts[0];
+        Axios.post("https://r03a3i3y0c.execute-api.us-east-1.amazonaws.com/default/web3", {account: account.toLowerCase(account)} )
+        .then(result =>
+          console.log(result)
+        )
+        .catch(error => {
+          console.log(error)
+        })
         const EZNFTBalance = await getNFT.balanceOf(web3, this.state.EtherZaarContractAddress, account);
         const EZNFTArray = await getUsersTokens(web3, ERC721ABI, this.state.EtherZaarContractAddress, EZNFTBalance, account);
         const EZNFTTokens = JSON.stringify(EZNFTArray);
